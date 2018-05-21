@@ -4,31 +4,69 @@ body {
   font-family: sans-serif;
 }
 
-.App {
-  text-align: center;
+header,
+footer {
+  background: #424242;
+  color: white;
+  /* text-align: center; */
+  padding: 1em;
+}
+main {
+  background: #e0e0e0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Section {
+  min-height: 150vh;
+  background: #eee;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.alternate {
+  background: #757575;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+
+.Link, .Link:visited, .Link:active {
+  color: red;
 }
 
-.App-intro {
-  font-size: large;
+
+
+
+.Container.nav {
+  border: 5px solid magenta;
+  flex-direction: row;
+  justify-content: space-around !important;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+/* main flexbox layout */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* border: 1px solid magenta; */
+}
+main {
+  flex: 1;
+}
+
+/* container flexbox layout */
+.Container {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.Container > * {
+  /* border: 1px solid blue; */
+  width: 100%;
+}
+
+
+
+/* about */
+.about {
+  border: 1px solid red;
 }
