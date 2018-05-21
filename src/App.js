@@ -1,64 +1,49 @@
 import React, { Component } from 'react';
-import './App.css';
-
-import Link from './components/Link';
 import Section from './components/Section';
-
-const Header = () => (
-  <header>
-    <Container className="nav">
-      <Link to="/">Gordon Doskas</Link>
-      <Link to="/about">About</Link>
-      <Link to="/portfolio">Portfolio</Link>
-      <Link to="/contact">Contact</Link>
-    </Container>
-  </header>
-);
-
-const Footer = () => (
-  <footer>
-    Copyright {new Date().getFullYear()} Gordon Doskas
-  </footer>
-);
+import { withStyles } from '@material-ui/core/styles';
+import withRoot from './withRoot';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Layout from './components/Layout';
 
 class Container extends Component {
   render() {
     return (
-      <div className={`Container ${this.props.className}`} style={this.props.style}>
+      <div
+        className={`Container ${this.props.className}`}
+        style={this.props.style}
+      >
         {this.props.children}
       </div>
     );
   }
 }
 
+const styles = {
+  root: {}
+};
+
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Header />
+    const { classes } = this.props;
 
-        <main>
-          <Container>
-            <Section name="about">
-              About
-            </Section>
+    return (
+      <div className={classes.root}>
+        <Layout>
+          <Header />
+          <Layout.Grow grow>
+            <Section name="about">About</Section>
             <Section name="portfolio" alternate>
               Portfolio
             </Section>
-            <Section name="contact">
-              Contact
-            </Section>
-          </Container>
-        </main>
-
-        <div>
-          Social
-        </div>
-
-        <Footer />
+            <Section name="contact">Contact</Section>
+          </Layout.Grow>
+          <div>Social</div>
+          <Footer />
+        </Layout>
       </div>
     );
   }
 }
 
-export default App;
+export default withRoot(withStyles(styles)(App));
