@@ -19,9 +19,15 @@ function Header(props) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="title" color="inherit" className={classes.flex}>
-          Gordon Doskas
-        </Typography>
+        <div className={classes.flex}>
+          <Link to="/">
+            <Button color="inherit">
+              <Typography variant="title" color="inherit">
+                GD
+              </Typography>
+            </Button>
+          </Link>
+        </div>
         <Link to="/about">
           <Button color="inherit">About</Button>
         </Link>
