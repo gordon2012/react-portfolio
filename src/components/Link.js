@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  root: {}
+};
 
 class Link extends Component {
   static contextTypes = {
@@ -13,7 +18,12 @@ class Link extends Component {
   };
 
   render() {
-    return <div onClick={this.handleClick}>{this.props.children}</div>;
+    const { classes } = this.props;
+    return (
+      <div className={classes} onClick={this.handleClick}>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
@@ -21,4 +31,4 @@ Link.propTypes = {
   to: PropTypes.string.isRequired
 };
 
-export default Link;
+export default withStyles(styles)(Link);
