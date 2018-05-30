@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import Section from './components/Section';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from './withRoot';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Layout from './components/Layout';
-
-class Container extends Component {
-  render() {
-    return (
-      <div
-        className={`Container ${this.props.className}`}
-        style={this.props.style}
-      >
-        {this.props.children}
-      </div>
-    );
-  }
-}
+import About from './sections/About';
+import Portfolio from './sections/Portfolio';
+import Contact from './sections/Contact';
 
 const styles = {
-  root: {}
+  root: {
+    backgroundImage: [
+      'linear-gradient(rgba(0,25,0,0.4), rgba(0,50,0,0.7))',
+      'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/303256/arches-945495_1920.jpg)'
+    ],
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    color: 'white'
+  }
 };
 
 class App extends Component {
@@ -32,11 +29,9 @@ class App extends Component {
         <Layout>
           <Header />
           <Layout.Grow grow>
-            <Section name="about">About</Section>
-            <Section name="portfolio" alternate>
-              Portfolio
-            </Section>
-            <Section name="contact">Contact</Section>
+            <About />
+            <Portfolio />
+            <Contact />
           </Layout.Grow>
           <div>Social</div>
           <Footer />

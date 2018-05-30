@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
-  root: {}
+  root: {
+    textAlign: 'center'
+  }
 };
 
 class Section extends Component {
@@ -22,7 +25,11 @@ class Section extends Component {
 
     return (
       <div className={classes.root} ref={this.props.name} id={this.props.name}>
-        {this.props.children}
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12} sm={10} md={8} lg={6} className={classes.rb}>
+            {this.props.children}
+          </Grid>
+        </Grid>
       </div>
     );
   }
