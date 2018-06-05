@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = {
   root: {
     minHeight: '100vh'
+    // border: '3px solid red'
   },
   grow: {
     flex: 1

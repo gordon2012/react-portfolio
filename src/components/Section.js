@@ -23,10 +23,24 @@ class Section extends Component {
   render() {
     const { classes } = this.props;
 
+    let grid = this.props.grid || {};
+    grid.xs = grid.xs || 12;
+    grid.sm = grid.sm || 10;
+    grid.md = grid.md || 8;
+    grid.lg = grid.lg || 6;
+    console.log(grid);
+
     return (
       <div className={classes.root} ref={this.props.name} id={this.props.name}>
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={12} sm={10} md={8} lg={6} className={classes.rb}>
+          <Grid
+            item
+            xs={grid.xs}
+            sm={grid.sm}
+            md={grid.md}
+            lg={grid.lg}
+            className={classes.rb}
+          >
             {this.props.children}
           </Grid>
         </Grid>
