@@ -15,10 +15,19 @@ const styles = theme => ({
     textAlign: 'justify'
   }),
   p: {
+    fontSize: '1.1em',
     marginBottom: 8
   },
-  copy: {
-    color: 'black'
+  avatar: {
+    height: 200,
+    border: '2px solid white',
+    borderRadius: '50%'
+  },
+  hero: {
+    fontSize: '5em'
+  },
+  tagline: {
+    fontSize: '3em'
   }
 });
 
@@ -38,12 +47,13 @@ class About extends Component {
 
     return (
       <Section name="about">
-        <h1>Gordon Doskas</h1>
+        <h1 className={classes.hero}>Gordon Doskas</h1>
         <img
+          className={classes.avatar}
           src="https://avatars3.githubusercontent.com/u/9071982?v=3&s=460"
           alt="Gordon Doskas"
         />
-        <h2>Front End Web Developer</h2>
+        <h2 className={classes.tagline}>Front End Web Developer</h2>
         <Wrap s={[10]}>
           <Paper className={classes.sheet} elevation={4}>
             {this.state.copy.map((p, i) => (
