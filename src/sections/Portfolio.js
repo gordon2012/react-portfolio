@@ -3,44 +3,64 @@ import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
 import Section from '../components/Section';
 
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-// import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import CardHeader from '@material-ui/core/CardHeader';
 
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+// import GridList from '@material-ui/core/GridList';
+// import GridListTile from '@material-ui/core/GridListTile';
+// import GridListTileBar from '@material-ui/core/GridListTileBar';
 // import ListSubheader from '@material-ui/core/ListSubheader';
 // import IconButton from '@material-ui/core/IconButton';
 // import InfoIcon from '@material-ui/icons/Info';
 
+import Paper from '@material-ui/core/Paper';
+import Avatar from '@material-ui/core/Avatar';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
+
 import Wrap from '../components/Wrap';
+
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import Chip from '@material-ui/core/Chip';
 
 const styles = {
   root: {
-    padding: '1em'
+    padding: 32
   },
   rb: {
     border: '3px solid red'
   },
   card: {
-    // maxWidth: 345
+    // height: 500
   },
   media: {
     height: 0,
     paddingTop: '56.25%' // 16:9
   },
 
-  gridList: {
-    // width: 500,
-    // height: 450
+  p: {
+    textAlign: 'justify'
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)'
+  },
+  center: {
+    // textAlign: 'center'
+    margin: '0 auto'
+  },
+  chips: {
+    border: '3px solid red',
+    padding: 0
+  },
+  chip: {
+    // marginRight: 10,
+    // marginBottom: 10
   }
 };
 
@@ -53,9 +73,10 @@ class Portfolio extends Component {
         image: 'wikiviewer.png',
         repo: 'https://github.com/gordon2012/wikiviewer',
         copy: [
-          'An implementation of Wikipedia search that uses its search API. Users can search Wikipedia entries in a search box and see the resulting Wikipedia entries and click a button to see a random Wikipedia entry.',
-          'Technologies used: React, Redux, Sass, Webpack, Wikipedia API.'
-        ]
+          `An implementation of Wikipedia search that uses its search API.`,
+          `Users can search Wikipedia entries in a search box and see the resulting Wikipedia entries and click a button to see a random Wikipedia entry.`
+        ],
+        technologies: ['React', 'Redux', 'Sass', 'Webpack', 'Wikipedia API']
       },
       {
         title: 'Camper Leaderboard',
@@ -63,9 +84,10 @@ class Portfolio extends Component {
         image: 'leaderboard.png',
         repo: 'https://github.com/gordon2012/leaderboard',
         copy: [
-          "A ranking of the top active FreeCodeCamp users. Users can see a table of the Free Code Camp campers who've earned the most brownie points in the past 30 days or in total.",
-          'Technologies used: React, Bootstrap, Sass, JQuery, Webpack.'
-        ]
+          `A ranking of the top active FreeCodeCamp users.`,
+          `Users can see a table of the Free Code Camp campers who've earned the most brownie points in the past 30 days or in total.`
+        ],
+        technologies: ['React', 'Bootstrap', 'Sass', 'JQuery', 'Webpack.']
       },
       {
         title: 'Markdown Previewer',
@@ -73,9 +95,10 @@ class Portfolio extends Component {
         image: 'markdown.png',
         repo: 'https://github.com/gordon2012/markdown',
         copy: [
-          'A live, styled markdown editor. As a user types markdown into the text box on the left, the output area on the right is styled appropriately in real time.',
-          'Technologies used: React, Marked, Webpack.'
-        ]
+          `A live, styled markdown editor.`,
+          `As a user types markdown into the text box on the left, the output area on the right is styled appropriately in real time.`
+        ],
+        technologies: ['React', 'Marked', 'Webpack.']
       },
       {
         title: 'Calculator',
@@ -83,9 +106,11 @@ class Portfolio extends Component {
         image: 'calculator.png',
         repo: 'https://github.com/gordon2012/calculator',
         copy: [
-          'A Javascript powered calculator. Users can add, subtract, multiply and divide two numbers, and clear the input field with a clear button. They can keep chaining mathematical operations together until the equal button is pressed, and the calculator will display the correct output.',
-          'Technologies used: Bootstrap, JQuery, Gulp.'
-        ]
+          `A Javascript powered calculator.`,
+          `Users can add, subtract, multiply and divide two numbers, and clear the input field with a clear button.`,
+          `They can keep chaining mathematical operations together until the equal button is pressed, and the calculator will display the correct output.`
+        ],
+        technologies: ['Bootstrap', 'JQuery', 'Gulp.']
       },
       {
         title: 'Random Quote Machine',
@@ -93,8 +118,15 @@ class Portfolio extends Component {
         image: 'quote.png',
         repo: 'https://github.com/gordon2012/quote',
         copy: [
-          'An app that retrieves quotes generated by the forismatic API. Users can click a button to be shown a new random quote and press a button to tweet out a quote.',
-          'Technologies used: React, Redux, Sass, Webpack, forismatic.com API.'
+          `An app that retrieves quotes generated by the forismatic API.`,
+          `Users can click a button to be shown a new random quote and press a button to tweet out a quote.`
+        ],
+        technologies: [
+          'React',
+          'Redux',
+          'Sass',
+          'Webpack',
+          'forismatic.com API.'
         ]
       },
       {
@@ -103,9 +135,10 @@ class Portfolio extends Component {
         image: 'twitch.png',
         repo: 'https://github.com/gordon2012/twitch',
         copy: [
-          'A monitor of Twitch.tv streamers. Users can see whether various channels are currently streaming on Twitch.tv, click the status output to be sent directly to that channel, see additional details about what a Twitch user is currently streaming, and see a placeholder notification if a streamer has closed their Twitch account (or the account never existed).',
-          'Technologies used: React, Redux, Sass, Mocha, Chai, Webpack.'
-        ]
+          `A monitor of Twitch.tv streamers.`,
+          `Users can see whether various channels are currently streaming on Twitch.tv, click the status output to be sent directly to that channel, see additional details about what a Twitch user is currently streaming, and see a placeholder notification if a streamer has closed their Twitch account (or the account never existed).`
+        ],
+        technologies: ['React', 'Redux', 'Sass', 'Mocha', 'Chai', 'Webpack.']
       },
       {
         title: 'Roll A Ball',
@@ -113,9 +146,10 @@ class Portfolio extends Component {
         image: 'roll-a-ball.png',
         repo: 'https://github.com/gordon2012/roll-a-ball',
         copy: [
-          'A simple demo, the player controls a ball in a third person view and is able to collect spinning cubes. The play area is confined by four walls.',
-          'Technologies used: Unity 3D'
-        ]
+          `A simple demo, the player controls a ball in a third person view and is able to collect spinning cubes.`,
+          `The play area is confined by four walls.`
+        ],
+        technologies: ['Unity 3D']
       },
       {
         title: 'Space Shooter',
@@ -123,9 +157,10 @@ class Portfolio extends Component {
         image: 'space-shooter.png',
         repo: 'https://github.com/gordon2012/space-shooter',
         copy: [
-          'A simple demo, the player controls a space ship in a top down vertically scrolling area of space. Enemy ships and asteroids appear in waves and are able to be dodged or fired at.',
-          'Technologies used: Unity 3D'
-        ]
+          `A simple demo, the player controls a space ship in a top down vertically scrolling area of space.`,
+          `Enemy ships and asteroids appear in waves and are able to be dodged or fired at.`
+        ],
+        technologies: ['Unity 3D']
       },
       {
         title: 'Pixel Art Maker',
@@ -133,9 +168,9 @@ class Portfolio extends Component {
         image: 'pixel-art-maker.png',
         repo: 'https://github.com/gordon2012/udacity-pixel-art-maker',
         copy: [
-          'A simple pixel based image editor, a user can change the grid size, select a color, and draw on the canvas.',
-          'Technologies used: HTML, CSS, JavaScript'
-        ]
+          `A simple pixel based image editor, a user can change the grid size, select a color, and draw on the canvas.`
+        ],
+        technologies: ['HTML', 'CSS', 'JavaScript']
       },
       {
         title: 'PURLs',
@@ -144,10 +179,12 @@ class Portfolio extends Component {
         image: 'purls.png',
         repo: false,
         copy: [
-          'PURLs, or Personalized URLs, are marketing landing pages used in conjunction with direct mail to identify and collect information from potential leads.',
-          'At Salt Creek Media, we have a host of ready made templates that our clients choose from, many of which I have created. We also create custom pages for them, and I have created many of those as well.',
-          'Technologies used: CakePHP, CSS, Bootstrap, JQuery'
-        ]
+          `Personalized URL marketing landing pages used in conjunction with direct mail`,
+          `They serve to identify and collect information from potential leads.`,
+          `At Salt Creek Media, we have a host of ready made templates that our clients choose from, many of which I have created.`,
+          `We also create custom pages for them, and I have created many of those as well.`
+        ],
+        technologies: ['CakePHP', 'CSS', 'Bootstrap', 'JQuery']
       }
     ]
   };
@@ -156,19 +193,47 @@ class Portfolio extends Component {
     const { classes } = this.props;
 
     return (
-      <Section name="portfolio" grid={{ xs: 12, sm: 12, md: 10, lg: 8 }}>
-        <h2>My Portfolio</h2>
-        <div className={classes.root}>
-          <GridList cellHeight={180} spacing={24} className={classes.gridList}>
-            {this.state.projects.map(tile => (
-              <GridListTile key={tile.title}>
-                <img src={`/img/${tile.image}`} alt={tile.title} />
-                <a href="#" className={classes.rb}>
-                  <GridListTileBar title={tile.title} />
-                </a>
-              </GridListTile>
+      <Section name="portfolio" grid={{ xs: 12, sm: 10, md: 10, lg: 10 }}>
+        <div className={`${classes.root} ${classes.rb}`}>
+          <h1>My Portfolio</h1>
+
+          <Grid container spacing={32}>
+            {this.state.projects.map((project, i) => (
+              <Grid item xs={12} md={6} lg={4} key={project.title}>
+                <Card className={classes.card}>
+                  <CardHeader
+                    avatar={true}
+                    action={
+                      <IconButton>
+                        <ZoomInIcon />
+                      </IconButton>
+                    }
+                    title={project.title}
+                  />
+
+                  <CardMedia
+                    className={classes.media}
+                    // image={`img/${project.image}`}
+                    image={`https://picsum.photos/200/300/?image=${(i + 1) *
+                      13}`}
+                    title="Contemplative Reptile"
+                  />
+
+                  {/* <CardContent className={classes.chips}>
+                    {project.technologies.map((tech, i) => (
+                      <Chip
+                        key={i}
+                        // avatar={avatar}
+                        label={tech}
+                        // onDelete={this.handleDelete(data)}
+                        className={classes.chip}
+                      />
+                    ))}
+                  </CardContent> */}
+                </Card>
+              </Grid>
             ))}
-          </GridList>
+          </Grid>
         </div>
       </Section>
     );
