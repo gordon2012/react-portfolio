@@ -29,7 +29,9 @@ import Wrap from '../components/Wrap';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
 import Chip from '@material-ui/core/Chip';
 
-const styles = {
+import Modal from '@material-ui/core/Modal';
+
+const styles = theme => ({
   root: {
     padding: 32
   },
@@ -61,11 +63,25 @@ const styles = {
   chip: {
     // marginRight: 10,
     // marginBottom: 10
+  },
+  modal: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    top: '5em',
+    right: '5em',
+    bottom: '3em',
+    left: '4em'
+  },
+  gridContainer: {
+    position: 'relative'
   }
-};
+});
 
 class Portfolio extends Component {
   state = {
+    open: 0,
     projects: [
       {
         title: 'Wikipedia Viewer',
@@ -189,23 +205,35 @@ class Portfolio extends Component {
     ]
   };
 
+  handleOpen = i => {
+    this.setState({ open: i });
+  };
+
+  handleClose = () => {
+    this.setState({ open: -1 });
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
-      <Section name="portfolio" grid={{ xs: 12, sm: 10, md: 10, lg: 10 }}>
-        <div className={`${classes.root} ${classes.rb}`}>
+      <div className={`${classes.root} ${classes.rb}`}>
+        <Section name="portfolio" grid={{ xs: 12, sm: 10, md: 10, lg: 10 }}>
           <h1>My Portfolio</h1>
 
-          <Grid container spacing={32}>
+          <Grid container spacing={32} className={classes.gridContainer}>
             {this.state.projects.map((project, i) => (
               <Grid item xs={12} md={6} lg={4} key={project.title}>
                 <Card className={classes.card}>
                   <CardHeader
-                    avatar={true}
+                    avatar={<div />}
                     action={
                       <IconButton>
-                        <ZoomInIcon />
+                        <ZoomInIcon
+                          onClick={() => {
+                            this.handleOpen(i);
+                          }}
+                        />
                       </IconButton>
                     }
                     title={project.title}
@@ -231,11 +259,30 @@ class Portfolio extends Component {
                     ))}
                   </CardContent> */}
                 </Card>
+
+                <Modal
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                  open={this.state.open === i}
+                  onClose={this.handleClose}
+                >
+                  <Paper className={`${classes.modal} ${classes.rb}`}>
+                    <Typography variant="title" id="modal-title">
+                      {project.title}
+                    </Typography>
+                    <Typography
+                      variant="subheading"
+                      id="simple-modal-description"
+                    >
+                      {project.copy.map(p => <p>{p}</p>)}
+                    </Typography>
+                  </Paper>
+                </Modal>
               </Grid>
             ))}
           </Grid>
-        </div>
-      </Section>
+        </Section>
+      </div>
     );
   }
 }
